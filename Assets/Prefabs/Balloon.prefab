@@ -40,9 +40,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1371361044982144605}
     m_Modifications:
-    - target: {fileID: 2528481174399832896, guid: 30a71a9bd3d475e4e888ec6b17c6c558, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 2330602938979486293, guid: 30a71a9bd3d475e4e888ec6b17c6c558, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.503
       objectReference: {fileID: 0}
     - target: {fileID: 4076717627030934219, guid: 30a71a9bd3d475e4e888ec6b17c6c558, type: 3}
       propertyPath: m_LocalPosition.x
@@ -87,6 +87,10 @@ PrefabInstance:
     - target: {fileID: 5534612148462883475, guid: 30a71a9bd3d475e4e888ec6b17c6c558, type: 3}
       propertyPath: m_Name
       value: V1_HotAirBalloon_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081723365408786322, guid: 30a71a9bd3d475e4e888ec6b17c6c558, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
