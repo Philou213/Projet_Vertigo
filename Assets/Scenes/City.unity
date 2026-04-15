@@ -23380,6 +23380,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5191944346732800240, guid: c97edbe796abbac489ed180e09e7be3e, type: 3}
+      propertyPath: m_CameraYOffset
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191944346732800240, guid: c97edbe796abbac489ed180e09e7be3e, type: 3}
+      propertyPath: m_RequestedTrackingOriginMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972258579915395798, guid: c97edbe796abbac489ed180e09e7be3e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -23396,6 +23408,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 18168152107682435, guid: c97edbe796abbac489ed180e09e7be3e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1506061080}
+    - targetCorrespondingSourceObject: {fileID: 18168152107682435, guid: c97edbe796abbac489ed180e09e7be3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1780485739}
     - targetCorrespondingSourceObject: {fileID: 4704387179154245719, guid: c97edbe796abbac489ed180e09e7be3e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1506061077}
@@ -23449,6 +23464,11 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!20 &1506061085 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5215086920944724480, guid: c97edbe796abbac489ed180e09e7be3e, type: 3}
+  m_PrefabInstance: {fileID: 1506061075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1506978896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27892,6 +27912,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2220306958673990031, guid: c97edbe796abbac489ed180e09e7be3e, type: 3}
   m_PrefabInstance: {fileID: 1506061075}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1780485739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506061079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6faab7d3a0f02429a36180d78371ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MovementDetection
+  xrCamera: {fileID: 1506061085}
+  plank: {fileID: 7694277291532770835}
+  StepSensitivity: 0.02
 --- !u!1001 &1785535598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33703,6 +33738,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e2f9427b92f3224c87651566ca6b9b9, type: 3}
+--- !u!1 &7694277291532770835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4669475083248784277, guid: 3e2f9427b92f3224c87651566ca6b9b9, type: 3}
+  m_PrefabInstance: {fileID: 3217339780758796072}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
