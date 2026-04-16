@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class MovementDetection : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip crackSFX;
     public Camera xrCamera;
-    public GameObject plank;
     public float StepSensitivity = 0.01f;
+    public float feetDistance = 2f;
+    public LayerMask plankLayer;
 
     private Vector3 lastPos;
 
@@ -17,8 +20,17 @@ public class MovementDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //CheckIfIsOnPlank();
-        IsPlayerStepping();
+        IsPlayerWalkingOnPlank();
+    }
+
+    void IsPlayerWalkingOnPlank()
+    {
+        if (IsPlayerStepping() && IsOnPlank())
+        {
+            Debug.Log("Crack");
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(crackSFX);
+        }
     }
 
     bool IsPlayerStepping()
@@ -37,24 +49,16 @@ public class MovementDetection : MonoBehaviour
         return false;
     }
 
-    void CheckIfIsOnPlank()
+    bool IsOnPlank()
     {
-        Vector3 localPos = transform.InverseTransformPoint(xrCamera.transform.position);
-        Vector3 halfSize = GetComponent<MeshFilter>().sharedMesh.bounds.extents;
+        Vector3 origin = xrCamera.transform.position;
 
-        bool onPlank =
-            Mathf.Abs(localPos.x) <= halfSize.x &&
-            Mathf.Abs(localPos.z) <= halfSize.z &&
-            localPos.y >= -0.1f && localPos.y <= halfSize.y + 0.2f;
-
-        Debug.Log("On plank: " + onPlank);
-    }
-
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.collider.CompareTag("Plank"))
+        // cast straight down from player
+        if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, feetDistance, plankLayer))
         {
-            Debug.Log("On plank");
+            return hit.collider.CompareTag("Plank");
         }
+
+        return false;
     }
 }
