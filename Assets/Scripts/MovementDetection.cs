@@ -2,19 +2,26 @@ using UnityEngine;
 
 public class MovementDetection : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public AudioClip crackSFX;
-    public Camera xrCamera;
-    public float StepSensitivity = 0.01f;
-    public float feetDistance = 2f;
-    public LayerMask plankLayer;
+    [Header("References")]
+    [SerializeField] private Camera xrCamera;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip crackSFX;
 
-    private Vector3 lastPos;
+    [Header("Step Settings")]
+    [Tooltip("Distance (meters) required to register one step")]
+    [SerializeField] private float stepDistance = 0.2f;
+
+    [Header("Ground Check")]
+    [SerializeField] private float feetDistance = 2f;
+    [SerializeField] private LayerMask plankLayer;
+
+    private Vector3 lastPosition;
+    private float accumulatedMovement = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        lastPos = xrCamera.transform.position;
+        lastPosition = xrCamera.transform.position;
     }
 
     // Update is called once per frame
@@ -37,12 +44,16 @@ public class MovementDetection : MonoBehaviour
     {
         Vector3 currentPos = xrCamera.transform.position;
 
-        float distance = Vector3.Distance(currentPos, lastPos);
+        Vector3 delta = currentPos - lastPosition;
+        delta.y = 0;
+        float distance = delta.magnitude;
 
-        lastPos = currentPos;
+        accumulatedMovement += distance;
+        lastPosition = currentPos;
 
-        if (distance > StepSensitivity) // small threshold to ignore noise
+        if (accumulatedMovement > stepDistance) // small threshold to ignore noise
         {
+            accumulatedMovement = 0f;
             Debug.Log("Player is moving IRL");
             return true;
         }
