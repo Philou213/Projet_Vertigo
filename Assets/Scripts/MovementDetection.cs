@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.XR.Management;
 
 public class MovementDetection : MonoBehaviour
 {
@@ -22,6 +24,16 @@ public class MovementDetection : MonoBehaviour
     void Start()
     {
         lastPosition = xrCamera.transform.position;
+
+        XRInputSubsystem subsystem =
+        XRGeneralSettings.Instance.Manager.activeLoader
+        .GetLoadedSubsystem<XRInputSubsystem>();
+
+        if (subsystem != null)
+        {
+            subsystem.TryRecenter();
+        }
+
     }
 
     // Update is called once per frame
