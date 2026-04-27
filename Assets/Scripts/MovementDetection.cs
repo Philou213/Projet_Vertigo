@@ -20,21 +20,6 @@ public class MovementDetection : MonoBehaviour
     private Vector3 lastPosition;
     private float accumulatedMovement = 0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        lastPosition = xrCamera.transform.position;
-
-        XRInputSubsystem subsystem =
-        XRGeneralSettings.Instance.Manager.activeLoader
-        .GetLoadedSubsystem<XRInputSubsystem>();
-
-        if (subsystem != null)
-        {
-            subsystem.TryRecenter();
-        }
-
-    }
 
     // Update is called once per frame
     void Update()
